@@ -1,7 +1,7 @@
 let deckId
 
 function handleClick() {
-    fetch("https://deckofcardsapi.com/api/deck/new/shuffle/")
+    fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
         .then(res => res.json())
         .then(data => {
             console.log(data)
@@ -10,3 +10,9 @@ function handleClick() {
 }
 
 document.getElementById("new-deck").addEventListener("click", handleClick);
+
+document.getElementById("draw").addEventListener("click", () => {
+    fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`)
+        .then(res => res.json())
+        .then(data => console.log(data))
+    })
